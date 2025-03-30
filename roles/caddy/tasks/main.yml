@@ -48,6 +48,7 @@
     content: '{{ item.content }}'
 
 - name: Deploy CaddyFile
+  when: caddy_defs is defined
   loop: "{{ caddy_defs }}"
   ansible.builtin.blockinfile:
     owner: '{{ caddy_user }}'
