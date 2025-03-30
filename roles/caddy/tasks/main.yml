@@ -38,7 +38,7 @@
         dest: '{{ cert_path }}'
 
 - name: Deploy backend certificates
-  when: backend_cert_defs | length>0
+  when: backend_cert_defs is defined and backend_cert_defs | length>0
   loop: '{{ backend_cert_defs }}'
   ansible.builtin.copy:
     owner: '{{ caddy_user }}'
