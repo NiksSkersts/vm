@@ -2,7 +2,7 @@
 # tasks file for vm-role-psql
 
 - name: "Deploy NFS backup"
-  when: nfs_backup
+  when: nfs_backup | default(false)
   block:
 
     - name: "Install postgresql-client"
