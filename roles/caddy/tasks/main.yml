@@ -13,7 +13,7 @@
     update_cache: true
 
 - name: Get Certs
-  when: get_cert_cloudflare
+  when: get_cert_cloudflare | default(false)
   block:
     - name: Set ~/cloudflare.ini
       ansible.builtin.copy:
