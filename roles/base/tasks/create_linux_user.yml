@@ -20,6 +20,7 @@
         shell: "{{ item.shell | default('/sbin/nologin')}}"
         system: "{{ item.system | default(false) }}"
         password: "{{ item.password | default(omit) | password_hash('sha512') }}"
+        update_password: '{{ item.update_policy | default("on_create") }}'
 
     - name: set ssh pub keys
       when: item.ssh_pub is defined
